@@ -47,7 +47,7 @@ const Header = () => {
           </div>
           <ul className="MENU-LINK-MOBILE-OPEN flex flex-col items-center justify-between min-h-[250px] bg-purple-100 text-black p-4">
             <li className="border-b border-gray-400 my-8 uppercase">
-              <a href="/about">About</a>
+              <Link to={"/"}>Home</Link>
             </li>
             <li className="border-b border-gray-400 my-8 uppercase">
               <Link to={"/signup"}>Sign-Up</Link>
@@ -55,7 +55,7 @@ const Header = () => {
             <li className="border-b border-gray-400 my-8 uppercase">
               <Link to={"/signin"}>Sign-In</Link>
             </li>
-          </ul> 
+          </ul>
         </div>
       </section>
       <div className={navOpen ? "hidden" : " sm:hidden"}>
@@ -63,12 +63,14 @@ const Header = () => {
           className="flex gap-2 items-center 
        "
         >
-          <li className=" m-2 cursor-pointer hover:underline">Home</li>
+          <li className=" m-2 cursor-pointer hover:underline">
+            <Link to={"/"}>Home</Link>
+          </li>
           <li className=" m-2 cursor-pointer hover:underline">Post</li>
           <li className=" m-2 cursor-pointer hover:underline">
             <Link to={"/signup"}>Sign-Up</Link>
           </li>
-          <li className=" m-2 cursor-pointer hover:underline" >
+          <li className=" m-2 cursor-pointer hover:underline">
             <Link to={"/signin"}>Sign-In</Link>
           </li>
         </ul>

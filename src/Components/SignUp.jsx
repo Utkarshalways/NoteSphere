@@ -18,8 +18,8 @@ const SignUp = () => {
 
     
 
-  return (
-    <div className="bg-white w-screen font-sans text-gray-900">
+  return ( 
+    <div className="bg-white w-1/3 font-sans text-gray-900 rounded-xl ">
       <div className=" ">
         <div className="mx-auto w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl">
           <div className="mx-2 py-12 text-center md:mx-auto md:w-2/3 md:py-20">

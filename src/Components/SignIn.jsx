@@ -15,6 +15,8 @@ const SignIn  =  () => {
     e.preventDefault();
 
     firebase.SignINUser(Email,Password);
+    setEmail("")
+    setPassword("")
 
   }
 
@@ -87,6 +89,14 @@ const SignIn  =  () => {
             <Link to={"/signup"}>Sign-Up</Link>
           </a>
         </p>
+
+        <div>OR</div>
+
+        <button className="bg-red-500 shrink-0 inline-block w-36 rounded-lg py-3 font-bold text-white"
+        onClick={firebase.signInwithgoogle}
+        >
+          Google
+        </button>
       </div>
     </div>
   );

@@ -8,11 +8,9 @@ const Home = () => {
     // console.log("This is Home")
   return (
     <>
-      <Header />
-      <Routes>
-        <Route path={"/signin"} element={<SignIn />}></Route>
-        <Route path={"/signup"} element={<SignUp />}></Route>
-      </Routes>
+     
+    <div>This is home</div>
+      
     </>
   );
 }

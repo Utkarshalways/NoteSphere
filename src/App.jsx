@@ -1,17 +1,29 @@
 
 import React from 'react'
 import Home from './pages/Home'
-
+import SignIn from './Components/SignIn';
+import SignUp from "./Components/SignUp";
+import { Route,Routes } from 'react-router-dom';
+import Header from "./Components/Header";
 
 
 const App = () => {
   
-  console.log(String(import.meta.env.VITE_FIREBASE_API_KEY));
+  // console.log(String(import.meta.env.VITE_FIREBASE_API_KEY));
   return (
-   <div className='h-screen w-full bg-red-500 '>
-  <Home/>
-   </div>
-  )
+
+    <>
+
+    <Header />
+      <Routes>
+
+        <Route path={"/"} element={<Home />}></Route>
+        <Route path={"/signin"} element={<SignIn />}></Route>
+        <Route path={"/signup"} element={<SignUp />}></Route>
+      </Routes>
+      
+    </>
+  );
 }
 
 export default App
