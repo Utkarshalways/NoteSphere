@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [navOpen, setnavOpen] = useState(false);
@@ -49,12 +50,12 @@ const Header = () => {
               <a href="/about">About</a>
             </li>
             <li className="border-b border-gray-400 my-8 uppercase">
-              <a href="/signup">SignUp</a>
+              <Link to={"/signup"}>Sign-Up</Link>
             </li>
             <li className="border-b border-gray-400 my-8 uppercase">
-              <a href="/signin">SignIn</a>
+              <Link to={"/signin"}>Sign-In</Link>
             </li>
-          </ul>
+          </ul> 
         </div>
       </section>
       <div className={navOpen ? "hidden" : " sm:hidden"}>
@@ -64,11 +65,11 @@ const Header = () => {
         >
           <li className=" m-2 cursor-pointer hover:underline">Home</li>
           <li className=" m-2 cursor-pointer hover:underline">Post</li>
-          <li className=" m-2 cursor-pointer hover:underline" href={"/signup"}>
-            Sign Up
+          <li className=" m-2 cursor-pointer hover:underline">
+            <Link to={"/signup"}>Sign-Up</Link>
           </li>
-          <li className=" m-2 cursor-pointer hover:underline" href={"/signin"}>
-            Sign In
+          <li className=" m-2 cursor-pointer hover:underline" >
+            <Link to={"/signin"}>Sign-In</Link>
           </li>
         </ul>
       </div>

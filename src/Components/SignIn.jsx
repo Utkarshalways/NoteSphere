@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 // import SignUp from "./SignUp";
 import { useFirebase } from "../context/Firebasecontextprovider";
+import { Link } from "react-router-dom";
 
 const SignIn  =  () => {
 
@@ -18,8 +19,7 @@ const SignIn  =  () => {
   }
 
   return (
-    
-    <div className="flex h-screen w-screen items-center overflow-hidden px-2">
+    <div className="flex h-full w-full items-center justify-center overflow-hidden px-2">
       <div className="relative flex w-96 flex-col space-y-5 rounded-lg border bg-white px-5 py-10 shadow-xl sm:mx-auto">
         <div className="-z-10 absolute top-4 left-1/2 h-full w-5/6 -translate-x-1/2 rounded-lg bg-blue-600 sm:-right-10 sm:top-auto sm:left-auto sm:w-full sm:translate-x-0"></div>
         <div className="mx-auto mb-2 space-y-3">
@@ -83,11 +83,8 @@ const SignIn  =  () => {
         </div>
         <p className="text-center text-gray-600">
           Don't have an account?
-          <a
-            // href={SignUp}
-            className="whitespace-nowrap font-semibold text-gray-900 hover:underline"
-          >
-            Sign up
+          <a className="whitespace-nowrap font-semibold text-gray-900 hover:underline">
+            <Link to={"/signup"}>Sign-Up</Link>
           </a>
         </p>
       </div>
