@@ -2,14 +2,20 @@
 import { initializeApp } from "firebase/app";
 
 
-//imports for the signin and sign up
+//imports from the /auth
 import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  onAuthStateChanged
 } from "firebase/auth";
+
+//Other imports related to the react 
+import React, { createContext, useContext, useState,useEffect } from 'react'
+
+
 
 //firebase details 
 const firebaseConfig = {
@@ -24,7 +30,6 @@ const firebaseConfig = {
 };
 
 
-import React, { createContext, useContext, useState } from 'react'
 
 const Firebasecontext = createContext(null);
 export const useFirebase = () => useContext(Firebasecontext);
@@ -32,14 +37,28 @@ const firebaseapp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseapp);
 const googleProvider = new GoogleAuthProvider();
 
-//Functions:--
-// const createUser = (email, password) => {
-  //   createUserWithEmailAndPassword(auth, email, password);
-  // };
   
   
   const Firebasecontextprovider = ({children}) => {
-    // const [count, setcount] = useState(0);
+    const [User,setUser] = useState(null);
+
+
+
+    useEffect(() => {
+      
+      onAuthStateChanged(auth,(user)=>{
+        console.log("User :-- ",user);
+        if(user){
+          setUser(user);
+        }
+        else{
+          setUser(null)
+        }
+      })
+    
+      
+    }, [auth])
+    
 
     const SignINUser = (email, password) => {
       signInWithEmailAndPassword(auth, email, password).then(()=>{
@@ -63,8 +82,17 @@ const googleProvider = new GoogleAuthProvider();
 
     const signInwithgoogle = () =>    signInWithPopup(auth,googleProvider)
 
+
+    const isLoggedin = User ? true : false;
+
     return (
-      <Firebasecontext.Provider value={{ signInwithgoogle, firebaseapp,SignINUser,CreateUser }}>
+      <Firebasecontext.Provider value={{ 
+        isLoggedin,
+        signInwithgoogle,
+         firebaseapp,
+         SignINUser,
+         CreateUser
+          }}>
         {children}
       </Firebasecontext.Provider>
     );

@@ -1,9 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useFirebase } from "../context/Firebasecontextprovider";
 
 const Header = () => {
   const [navOpen, setnavOpen] = useState(false);
+  const [isuserLoggedin,setisuserLoggedin] = useState(false);
+  const firebase = useFirebase();
+  console.log(firebase);
   return (
     <header className="bg-purple-800 p-4 flex gap-2 items-center justify-between text-white sticky">
       <div className="left flex gap-2 items-center ">
@@ -14,7 +18,6 @@ const Header = () => {
         />
         <p className=" font-bold text-l sm:text-sm">NOTESPHERE</p>
       </div>
-
       <section>
         <div
           className="HAMBURGER-ICON space-y-2 hidden  sm:inline "
@@ -49,10 +52,22 @@ const Header = () => {
             <li className="border-b border-gray-400 my-8 uppercase">
               <Link to={"/"}>Home</Link>
             </li>
-            <li className="border-b border-gray-400 my-8 uppercase">
+            <li
+              className={
+                firebase.isLoggedin
+                  ? "hidden"
+                  : "border-b border-gray-400 my-8 uppercase"
+              }
+            >
               <Link to={"/signup"}>Sign-Up</Link>
             </li>
-            <li className="border-b border-gray-400 my-8 uppercase">
+            <li
+              className={
+                firebase.isLoggedin
+                  ? "hidden"
+                  : "border-b border-gray-400 my-8 uppercase"
+              }
+            >
               <Link to={"/signin"}>Sign-In</Link>
             </li>
           </ul>
@@ -67,10 +82,22 @@ const Header = () => {
             <Link to={"/"}>Home</Link>
           </li>
           <li className=" m-2 cursor-pointer hover:underline">Post</li>
-          <li className=" m-2 cursor-pointer hover:underline">
+          <li
+            className={
+              firebase.isLoggedin
+                ? "hidden"
+                : " m-2 cursor-pointer hover:underline"
+            }
+          >
             <Link to={"/signup"}>Sign-Up</Link>
           </li>
-          <li className=" m-2 cursor-pointer hover:underline">
+          <li
+            className={
+              firebase.isLoggedin
+                ? "hidden"
+                : " m-2 cursor-pointer hover:underline"
+            }
+          >
             <Link to={"/signin"}>Sign-In</Link>
           </li>
         </ul>

@@ -1,24 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import SignUp from "./SignUp";
 import { useFirebase } from "../context/Firebasecontextprovider";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SignIn  =  () => {
 
  const  firebase = useFirebase();
+ const navigate = useNavigate();
  console.log(firebase);
 
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
 
+  //this function is for the Signin user 
   const handlesubmit = (e) => {
     e.preventDefault();
-
     firebase.SignINUser(Email,Password);
     setEmail("")
     setPassword("")
-
   }
+
+  useEffect(() => {
+    
+    if(firebase.isLoggedin){
+      navigate("/");
+    }
+  
+    
+  }, [firebase])
+  
+
+
+
+
+
+
+
 
   return (
     <div className="flex h-full w-full items-center justify-center overflow-hidden px-2">

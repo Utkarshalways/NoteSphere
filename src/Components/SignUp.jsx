@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { useFirebase } from '../context/Firebasecontextprovider'
+import { useNavigate } from 'react-router-dom';
 
 
 // const auth = getAuth(app);
 const SignUp = () => {
 
   const firebase = useFirebase();
-  console.log(firebase);
+   const navigate = useNavigate();
+  
     const [password, setpassword] = useState("")
     const [email, setemail] = useState("")
 
@@ -16,9 +18,16 @@ const SignUp = () => {
       firebase.CreateUser(email,password);
     }
 
+    useEffect(() => {
+      if (firebase.isLoggedin) {
+        navigate("/");
+      }
+    }, [firebase]);
+
     
 
   return ( 
+      <div className="flex h-full w-full items-center justify-center overflow-hidden px-2">
     <div className="bg-white w-1/3 font-sans text-gray-900 rounded-xl ">
       <div className=" ">
         <div className="mx-auto w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl">
@@ -78,6 +87,7 @@ const SignUp = () => {
           </div>
         </form>
       </div>
+    </div>
     </div>
   );
 }
