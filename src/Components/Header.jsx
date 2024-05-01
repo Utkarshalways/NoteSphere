@@ -89,16 +89,31 @@ const Header = () => {
                 : " m-2 cursor-pointer hover:underline"
             }
           >
-            <Link to={"/signup"}>Sign-Up</Link>
+            <Link to={"/signin"}>Sign-In</Link>
           </li>
           <li
             className={
               firebase.isLoggedin
                 ? "hidden"
-                : " m-2 cursor-pointer hover:underline"
+                : "  bg-blue-500 p-1 rounded-lg hover:bg-blue-600"
             }
           >
-            <Link to={"/signin"}>Sign-In</Link>
+            <Link to={"/signup"}>Sign-Up</Link>
+          </li>
+
+          <li
+            className={
+              firebase.isLoggedin
+                ? " m-2 cursor-pointer hover:underline"
+                : "hidden"
+            }
+          >
+            <button
+              onClick={firebase.logout}
+              className="  bg-red-500 p-1 rounded-lg hover:bg-red-600"
+            >
+              Log-Out
+            </button>
           </li>
         </ul>
       </div>

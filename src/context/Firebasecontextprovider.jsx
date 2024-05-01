@@ -9,7 +9,9 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
-  onAuthStateChanged
+  onAuthStateChanged,
+  signOut
+  
 } from "firebase/auth";
 
 //Other imports related to the react 
@@ -82,6 +84,16 @@ const googleProvider = new GoogleAuthProvider();
 
     const signInwithgoogle = () =>    signInWithPopup(auth,googleProvider)
 
+    const logout = () => {
+      
+
+      signOut(auth).then(()=>{
+        console.log("Signout successfully");
+      }).catch((err)=>{
+        console.log(err);
+      })
+      
+    }
 
     const isLoggedin = User ? true : false;
 
@@ -91,7 +103,8 @@ const googleProvider = new GoogleAuthProvider();
         signInwithgoogle,
          firebaseapp,
          SignINUser,
-         CreateUser
+         CreateUser,
+         logout
           }}>
         {children}
       </Firebasecontext.Provider>
