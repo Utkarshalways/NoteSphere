@@ -14,6 +14,17 @@ import {
   
 } from "firebase/auth";
 
+
+//imports from the firestore
+import {
+  addDoc,
+    collection,
+    getDocs,
+    getFirestore,
+} from "firebase/firestore";
+
+//imports from the firebase/storage
+import { getStorage,ref,uploadBytes   } from "firebase/storage";
 //Other imports related to the react 
 import React, { createContext, useContext, useState,useEffect } from 'react'
 
@@ -38,6 +49,8 @@ export const useFirebase = () => useContext(Firebasecontext);
 const firebaseapp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseapp);
 const googleProvider = new GoogleAuthProvider();
+const firestore = getFirestore(firebaseapp);
+const storage = getStorage(firebaseapp);
 
   
   
@@ -49,7 +62,7 @@ const googleProvider = new GoogleAuthProvider();
     useEffect(() => {
       
       onAuthStateChanged(auth,(user)=>{
-        console.log("User :-- ",user);
+        // console.log("User :-- ",user);
         if(user){
           setUser(user);
         }
@@ -97,15 +110,45 @@ const googleProvider = new GoogleAuthProvider();
 
     const isLoggedin = User ? true : false;
 
+
+
+    const handlenoteformsubmit = async (title,email,number,pic,description) => {
+
+      const imageRef = ref(storage,`uploads/images/${Date.now()}-${pic.name}`);
+       const uploadResult =   await uploadBytes(imageRef,pic); 
+
+       console.log(User);
+       return  await addDoc(collection(firestore,"notes"),{
+          title,
+          email,
+          number,
+          imageUrl: uploadResult.ref.fullPath,
+          description,
+          UserEmail: User.email,
+          Uid:User.uid
+       })
+    }
+
+
+    const getNotes = () => {
+
+      return getDocs(collection( firestore,"notes"));
+    };
+
     return (
-      <Firebasecontext.Provider value={{ 
-        isLoggedin,
-        signInwithgoogle,
-         firebaseapp,
-         SignINUser,
-         CreateUser,
-         logout
-          }}>
+      <Firebasecontext.Provider
+        value={{
+          isLoggedin,
+          signInwithgoogle,
+          firebaseapp,
+          SignINUser,
+          CreateUser,
+          logout,
+          handlenoteformsubmit,
+          getNotes,
+          User
+        }}
+      >
         {children}
       </Firebasecontext.Provider>
     );
