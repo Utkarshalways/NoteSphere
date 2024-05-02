@@ -5,9 +5,8 @@ import { useFirebase } from "../context/Firebasecontextprovider";
 
 const Header = () => {
   const [navOpen, setnavOpen] = useState(false);
-  const [isuserLoggedin,setisuserLoggedin] = useState(false);
   const firebase = useFirebase();
-  console.log(firebase);
+  // console.log(firebase);
   return (
     <header className="bg-purple-800 p-4 flex gap-2 items-center justify-between text-white sticky">
       <div className="left flex gap-2 items-center ">
