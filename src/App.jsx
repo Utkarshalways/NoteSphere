@@ -5,6 +5,7 @@ import SignIn from './Components/SignIn';
 import SignUp from "./Components/SignUp";
 import { Route,Routes } from 'react-router-dom';
 import Header from "./Components/Header";
+import NoteForm from './Components/NoteForm';
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
         <Route path={"/"} element={<Home />}></Route>
         <Route path={"/signin"} element={<SignIn />}></Route>
         <Route path={"/signup"} element={<SignUp />}></Route>
+        <Route path={"/noteform"} element={<NoteForm />}></Route>
       </Routes>
       
     </>
