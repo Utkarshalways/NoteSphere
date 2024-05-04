@@ -24,7 +24,7 @@ import {
 } from "firebase/firestore";
 
 //imports from the firebase/storage
-import { getStorage,ref,uploadBytes   } from "firebase/storage";
+import { getDownloadURL, getStorage,ref,uploadBytes   } from "firebase/storage";
 //Other imports related to the react 
 import React, { createContext, useContext, useState,useEffect } from 'react'
 
@@ -135,6 +135,12 @@ const storage = getStorage(firebaseapp);
       return getDocs(collection( firestore,"notes"));
     };
 
+    const getUrl = (path) => {
+
+      return getDownloadURL(ref(storage,path));
+    }
+
+    
     return (
       <Firebasecontext.Provider
         value={{
@@ -146,7 +152,8 @@ const storage = getStorage(firebaseapp);
           logout,
           handlenoteformsubmit,
           getNotes,
-          User
+          User,
+          getUrl
         }}
       >
         {children}

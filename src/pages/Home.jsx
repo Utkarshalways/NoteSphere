@@ -37,6 +37,7 @@ const Home = () => {
      
     <div className=' flex items-center justify-center '>
 
+        This is the Home Page Here you will see your all the notes that you have been created
 
       {
                 
@@ -44,15 +45,18 @@ const Home = () => {
           {/* console.log(note.data().Uid); */}
           if (userid == note.data().Uid){
 
-            return <div key={note.data().Uid}>{note.data().title}</div>;
+            return <div key={note.data().Uid}>
+
+              <Card {...note.data()}></Card>
+            </div>;
+            
+            
           }
         
       })}
       
 
-   
-
-    
+  
       </div>
     </>
   );
