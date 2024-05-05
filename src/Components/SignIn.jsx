@@ -20,6 +20,7 @@ const SignIn  =  () => {
     setEmail("")
     setPassword("")
   }
+  
 
   useEffect(() => {
     
@@ -30,12 +31,6 @@ const SignIn  =  () => {
     
   }, [firebase])
   
-
-
-
-
-
-
 
 
   return (

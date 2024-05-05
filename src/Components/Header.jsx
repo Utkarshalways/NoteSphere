@@ -54,6 +54,15 @@ const Header = () => {
             <li
               className={
                 firebase.isLoggedin
+                  ? "border-b border-gray-400 my-8 uppercase"
+                  : "hidden"
+              }
+            >
+              <Link to={"/noteform"}>Form</Link>
+            </li>
+            <li
+              className={
+                firebase.isLoggedin
                   ? "hidden"
                   : "border-b border-gray-400 my-8 uppercase"
               }
@@ -80,7 +89,14 @@ const Header = () => {
           <li className=" m-2 cursor-pointer hover:underline">
             <Link to={"/"}>Home</Link>
           </li>
-          <li className=" m-2 cursor-pointer hover:underline">Post</li>
+          
+          <li
+            className={
+              firebase.isLoggedin ? " m-2 cursor-pointer hover:underline" : "hidden"
+            }
+          >
+            <Link to={"/noteform"}>Form</Link>
+          </li>
           <li
             className={
               firebase.isLoggedin
@@ -99,7 +115,6 @@ const Header = () => {
           >
             <Link to={"/signup"}>Sign-Up</Link>
           </li>
-
           <li
             className={
               firebase.isLoggedin

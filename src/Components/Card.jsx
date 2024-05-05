@@ -21,7 +21,7 @@ const Card = (props) => {
   return (
     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <a href="#">
-        <img class="rounded-t-lg" src={url} alt="" />
+        <img class="rounded-t-lg h-1/3 w-1/4" src={url} alt="" />
       </a>
       <div class="p-5">
         <a href="#">
