@@ -95,7 +95,7 @@ const storage = getStorage(firebaseapp);
     }
     
 
-    const signInwithgoogle = () =>    signInWithPopup(auth,googleProvider)
+    const signInwithgoogle = () =>    signInWithPopup(auth,googleProvider);
 
     const logout = () => {
       
