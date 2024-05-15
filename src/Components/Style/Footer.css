@@ -1,0 +1,42 @@
+
+.Footer{
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border-top:2px solid black; */
+    border:2px solid black;
+    height: 30%;
+    width: 100%;
+    padding: 1rem;
+
+
+    .Title {
+
+        font-size: 2rem;
+
+        &:hover{
+            text-decoration: underline;
+        }
+
+    }
+
+    .OTHERLINKS{
+
+        /* text-decoration: none; */
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+
+        li:hover{
+
+            text-decoration: underline;
+        }
+    }
+
+
+
+
+}
